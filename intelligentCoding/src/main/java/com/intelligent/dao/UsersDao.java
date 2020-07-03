@@ -16,12 +16,13 @@ public interface UsersDao extends JpaRepository<Users, Integer>{
     // JPA内置的数据库操作，一般多为查找操作，很方便但是有局限，一般可以自己写sql比较方便
     Optional<Users> findById(Integer id);
 
-    // 查询数据
-    Users findByNameAndPassword(String name, String password);
+    // 用户名查询用户
+    @Query(nativeQuery = true, value = "select * from users where name=?1")
+    Users getUserByName(String nam);
 
-    // 查询数据
+    // 用户名&密码查询用户
     @Query(nativeQuery = true, value = "select * from users where name=?1 and password=?2")
-    Users getUser(String name, String password);
+    Users getUserByNameAndPassword(String name, String password);
 
     // 插入数据操作
     @Transactional
