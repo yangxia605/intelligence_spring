@@ -7,6 +7,7 @@ import com.intelligent.dao.TopicDao;
 import com.intelligent.model.Topic;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,13 +24,19 @@ public class TopicController {
         this.topicDao = topicDao;
     }
 
-    // 题库
+    // 全部题目（id name time space）
     @RequestMapping(value = "alltopics", method = RequestMethod.GET)
-    public List<Map<String,Object>> getAllTopics(HttpServletRequest request){
-        List<Map<String,Object>> topics = topicDao.getAllTopics();
-        Response response = new Response();
-        response.setSuccess(true);
-        response.setCode(20000);
-        return topics;
+    public List<Map<String,Object>> getAllTopics(){
+        return topicDao.getAllTopicsInfo();
+    }
+
+    // tid题目信息（id name time space）
+    public Map<String,Object> getTopicInfobyTid(@RequestParam("topicID") int tid){
+        return topicDao.getTopicInfobyTid(tid);
+    }
+
+    // tid题目完整信息
+    public Topic getTopicbyTid(@RequestParam("topicID") int tid){
+        return topicDao.getTopicbyTid(tid);
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -31,7 +33,7 @@ public class UserController {
     public Response login(@RequestParam("username") String name, @RequestParam("password") String password, HttpServletRequest request) {
         String message = null;
         Users user = usersDao.getUserByNameAndPassword(name, password);
-        Users userbyname = usersDao.getUserByName(name);
+        Users userbyname = usersDao.findByName(name);
         Response response = new Response();
         if (user != null) {
             response.setMessage("登录成功");
@@ -45,7 +47,6 @@ public class UserController {
                 该用户后续的请求调用session.getAttribute("userID")将返回userID
                 该用户后续的请求调用session.getAttribute("userName")将返回userName
              */
-
             log.info(user.getName() + "已登录");
             request.getSession().setAttribute("userID", user.getId());
             request.getSession().setAttribute("userName", user.getName());
@@ -91,6 +92,32 @@ public class UserController {
         return  response;
     }
 
+    // 获取用户信息
+    @RequestMapping(value = "userInfo", method = RequestMethod.GET)
+    public Map<String,Object> getuserInfo(final HttpServletRequest request){
+        String name = request.getSession().getAttribute("userName").toString();
+        Map<String, Object> userInfo = new HashMap<String, Object>();
+        if( request.getSession().getAttribute("userName") != null ){
+            Users user = usersDao.findByName(name);
+            userInfo.put("username", user.getName());
+            userInfo.put("location", user.getLocation());
+            userInfo.put("email", user.getEamil());
+            userInfo.put("intro", user.getIntro());
+            if(user.isGender()){
+                userInfo.put("gender", "女");
+            }else{
+                userInfo.put("gender", "男");
+            }
+            if(user.isCareer()){
+                userInfo.put("career", "学生");
+            }else{
+                userInfo.put("career", "工作");
+            }
+        }else {
+            // 未登录情况
+        }
+        return userInfo;
+    }
 
 }
 

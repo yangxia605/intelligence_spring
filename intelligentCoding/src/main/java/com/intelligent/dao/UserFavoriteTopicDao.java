@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserFavoriteTopicDao extends JpaRepository<UserFavoriteTopic, Integer> {
-    // 用户id查询收藏题目
-    @Query(nativeQuery = true, value = "select topicID from userfavoritetopic where userId=?1")
-    List<Map<String,Object>> getFavoriteTidByuid(int uid);
+    // 用户id查询收藏题目id
+    @Query(nativeQuery = true, value = "select topic_id from user_favorite_topic where user_id=?1")
+    int[] getFavoriteTidByuid(int uid);
 }

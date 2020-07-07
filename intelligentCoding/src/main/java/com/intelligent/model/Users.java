@@ -22,6 +22,7 @@ public class Users {
     private boolean gender;
     private String intro;
     private String location;
+    private String email;
     private boolean career = false;
     private String text;
 
@@ -57,6 +58,14 @@ public class Users {
         this.id = id;
     }
 
+    public String getEamil() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
@@ -64,6 +73,7 @@ public class Users {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getPassword() {
         return password;
