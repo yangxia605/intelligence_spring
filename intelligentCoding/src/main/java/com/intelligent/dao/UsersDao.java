@@ -17,7 +17,7 @@ public interface UsersDao extends JpaRepository<Users, Integer>{
     Optional<Users> findById(Integer id);
 
     // 查询数据
-    Users findByNameAndPassword(String name, String password);
+    Users findByName(String name);
 
     // 查询数据
     @Query(nativeQuery = true, value = "select * from users where name=?1 and password=?2")

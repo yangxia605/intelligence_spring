@@ -43,6 +43,24 @@ public class UserController {
         return response;
     }
 
+    @RequestMapping(value = "register", method = RequestMethod.GET)
+    public Response register(@RequestParam("username") String name, @RequestParam("password") String password, HttpServletRequest request) {
+        Response response = new Response();
+        Users users = usersDao.findByName(name);
+        if(users != null) {
+            response.setCode(200);
+            response.setMessage("用户名已被占用");
+            response.setSuccess(false);
+        }
+        else {
+            usersDao.insertUser(name, password);
+            response.setCode(400);
+            response.setMessage("注册成功，请重新登录");
+            response.setSuccess(true);
+        }
+        return  response;
+    }
+
 
 }
 
