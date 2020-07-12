@@ -46,13 +46,14 @@ public class UserController {
             /*
                 使用spring security+ jwt实现用户登录验证，后续所有api需要携带token才能访问
              */
-            Authentication authentication = authenticationManager
-                    .authenticate(new UsernamePasswordAuthenticationToken(name, password));
+        log.info(name + " " + encoder.encode(password));
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(name, password));
 
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            String jwt = jwtProvider.generateJwtToken(authentication);
-            return ResponseEntity.ok(new JwtResponse(jwt));
+        String jwt = jwtProvider.generateJwtToken(authentication);
+        return ResponseEntity.ok(new JwtResponse(jwt));
     }
 
     //登出
@@ -78,7 +79,7 @@ public class UserController {
             response.setMessage("用户名已被占用");
             response.setSuccess(false);
         } else {
-            usersDao.insertUser(name, password);
+            usersDao.insertUser(name, encoder.encode(password));
             response.setCode(400);
             response.setMessage("注册成功，请重新登录");
             response.setSuccess(true);
