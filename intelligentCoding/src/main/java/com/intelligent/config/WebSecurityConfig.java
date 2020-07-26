@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+
 @EnableGlobalMethodSecurity(
         prePostEnabled = true
 )
@@ -44,7 +45,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -60,7 +60,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login", "/register").permitAll()
+                .antMatchers("/login",
+                        "/register",
+                        "/v2/api-docs",
+                        "/configuration/**",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html",
+                        "/webjars/**",
+                        "/api-docs/**",
+                        "/favicon.ico"
+                ).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

@@ -6,6 +6,7 @@ import com.intelligent.dao.UsersDao;
 import com.intelligent.interceptor.JwtProvider;
 import com.intelligent.model.Users;
 import com.intelligent.controller.type.JwtResponse;
+import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,6 +26,7 @@ import java.util.logging.Logger;
 /**
  * 后端接口层，后端接口在此文件夹下完成
  */
+@Api(value = "用户模块")
 @RestController
 public class UserController {
     private final UsersDao usersDao;
@@ -60,8 +62,8 @@ public class UserController {
     @RequestMapping(value = "logout", method = RequestMethod.POST)
     public Response logout(final HttpServletRequest request) {
         //已登录，销毁session
-        String name = request.getSession().getAttribute("userName").toString();
-        log.info(name + "已登出");
+//        String name = request.getSession().getAttribute("userName").toString();
+//        log.info(name + "已登出");
         request.getSession().invalidate();
         Response response = new Response();
         response.setMessage("已登出！");
