@@ -1,6 +1,7 @@
 package com.intelligent.interceptor;
 
 import com.intelligent.service.UserDetailsServiceImpl;
+import com.intelligent.util.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -41,11 +42,11 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
                 UsernamePasswordAuthenticationToken authentication
                         = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception e) {
             log.log(Level.SEVERE, "Can NOT set user authentication -> Message:", e);
+            UserContext.removeCurrentUser();
         }
 
         filterChain.doFilter(request, response);

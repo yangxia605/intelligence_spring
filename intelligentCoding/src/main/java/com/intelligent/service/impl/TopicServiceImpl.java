@@ -47,8 +47,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Topic getTopicbyTid(int tid, PageRequest pageRequest) {
-        return null;
+    public Topic getTopicByTid(int tid) {
+        return topicMapper.getById(tid);
     }
 
     @Override

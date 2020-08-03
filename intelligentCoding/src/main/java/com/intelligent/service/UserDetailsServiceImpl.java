@@ -3,6 +3,7 @@ package com.intelligent.service;
 import com.intelligent.dao.UsersDao;
 import com.intelligent.model.Users;
 import com.intelligent.type.UserPrinciple;
+import com.intelligent.util.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,6 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (Objects.isNull(user)) {
             throw new UsernameNotFoundException("User Not Found with -> username : " + username);
         }
+        UserContext.setCurrentUser(user);
         return UserPrinciple.build(user);
     }
 }

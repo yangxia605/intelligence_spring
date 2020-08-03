@@ -16,7 +16,7 @@ public interface TopicService {
     Result getByKeyword(String keyword, PageRequest pageRequest);
 
     // tid查询题目完整信息
-    Topic getTopicbyTid(int tid, PageRequest pageRequest);
+    Topic getTopicByTid(int tid);
 
     // 通过题目难度查找题目
     Result getTopicByLevel(int level, PageRequest pageRequest);

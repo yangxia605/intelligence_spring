@@ -39,9 +39,10 @@ public class TopicController {
         return topicDao.getTopicInfobyTid(tid);
     }
 
-    // tid题目完整信息
-    public Topic getTopicbyTid(@RequestParam("topicID") int tid){
-        return topicDao.getTopicbyTid(tid);
+    // 通过tid获取题目完整信息
+    @GetMapping(path = "topics/{topicId}")  //URL地址
+    public Topic getTopicByTid(@PathVariable("topicId") int topicId){
+        return topicService.getTopicByTid(topicId);
     }
 
     // online_1: 获取所有编程题目

@@ -42,4 +42,9 @@ public interface TopicMapper {
     // 根据通过率排序
     @Select(value = "select * from topic as t order by t.pass_rate desc, t.id")
     List<Topic> getTopicByRateDesc();
+
+
+    // 根据topic id筛选出该题目信息
+    @Select(value = "select * from topic where topic.id =#{id}")
+    Topic getById(@Param("id")Integer id);
 }
