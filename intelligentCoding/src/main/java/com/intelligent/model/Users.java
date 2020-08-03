@@ -3,9 +3,10 @@ package com.intelligent.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -25,6 +26,12 @@ public class Users {
     private String email;
     private boolean career = false;
     private String text;
+    @ManyToMany
+    @JsonIgnoreProperties("users")
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Roles> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("users")
@@ -171,6 +178,18 @@ public class Users {
         this.userFavoriteTopics = userFavoriteTopics;
     }
 
+    public List<Roles> getRoles() {
+        return roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "Users{" +
@@ -188,6 +207,7 @@ public class Users {
                 ", solutions=" + solutions +
                 ", userFavoriteSolutions=" + userFavoriteSolutions +
                 ", userFavoriteTopics=" + userFavoriteTopics +
+                ", roles=" + roles +
                 '}';
     }
 }
