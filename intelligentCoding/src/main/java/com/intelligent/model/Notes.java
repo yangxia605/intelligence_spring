@@ -23,12 +23,12 @@ public class Notes {
     private Timestamp submitTime;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"notes"})
     @JoinColumn(name = "userId", insertable = false, updatable = false, nullable = false)
     private Users users;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"notes"})
     @JoinColumn(name = "topicId", insertable = false, updatable = false, nullable = false)
     private Topic topic;
 

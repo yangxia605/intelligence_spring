@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.UndeclaredThrowableException;
+import java.util.List;
 
 @Entity
 //@Table(uniqueConstraints = @UniqueConstraint(name = "user_favorite_solution_users_topic", columnNames = {"userId", "solutionId"}))
@@ -16,17 +17,17 @@ public class UserFavoriteSolution {
     @NotNull
     private Integer userId;
     @NotNull
-    private Integer topicId;
+    private Integer solutionId;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"userFavoriteSolutions"})
     @JoinColumn(name = "userId", insertable = false, updatable = false, nullable = false)
     private Users users;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
-    @JoinColumn(name = "topicId", insertable = false, updatable = false, nullable = false)
-    private Topic topic;
+    @JsonIgnoreProperties({"userFavoriteSolutions"})
+    @JoinColumn(name = "solutionId", insertable = false, updatable = false, nullable = false)
+    private Solution solution;
 
     public Integer getId() {
         return id;
@@ -44,14 +45,6 @@ public class UserFavoriteSolution {
         this.userId = userId;
     }
 
-    public Integer getTopicId() {
-        return topicId;
-    }
-
-    public void setTopicId(Integer topicId) {
-        this.topicId = topicId;
-    }
-
     public Users getUsers() {
         return users;
     }
@@ -60,12 +53,20 @@ public class UserFavoriteSolution {
         this.users = users;
     }
 
-    public Topic getTopic() {
-        return topic;
+    public Integer getSolutionId() {
+        return solutionId;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
+    public void setSolutionId(Integer solutionId) {
+        this.solutionId = solutionId;
+    }
+
+    public Solution getSolution() {
+        return solution;
+    }
+
+    public void setSolution(Solution solution) {
+        this.solution = solution;
     }
 
     @Override
@@ -73,9 +74,9 @@ public class UserFavoriteSolution {
         return "UserFavoriteSolution{" +
                 "id=" + id +
                 ", userId=" + userId +
-                ", topicId=" + topicId +
+                ", solutionId=" + solutionId +
                 ", users=" + users +
-                ", topic=" + topic +
+                ", solution=" + solution +
                 '}';
     }
 }

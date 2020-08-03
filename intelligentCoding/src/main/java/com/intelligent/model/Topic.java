@@ -2,6 +2,7 @@ package com.intelligent.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,6 +22,14 @@ public class Topic {
     private String inputIntro;
     private String outputIntro;
     private String topicPs;
+    @Column(insertable = false, columnDefinition = "int default 0")
+    private int topicLevel;
+    @Column(insertable = false, columnDefinition = "int default 0")
+    private int passCount;
+    @Column(insertable = false, columnDefinition = "int default 0")
+    private int failCount;
+    @Column(insertable = false, columnDefinition = "float default 0.0")
+    private double passRate;
 
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("topic")
@@ -48,11 +57,15 @@ public class Topic {
 
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("topic")
-    private List<UserFavoriteSolution> userFavoriteSolutions;
-
-    @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("topic")
     private List<UserFavoriteTopic> userFavoriteTopics;
+
+    public int getTopicLevel() {
+        return topicLevel;
+    }
+
+    public void setTopicLevel(int topicLevel) {
+        this.topicLevel = topicLevel;
+    }
 
     public Integer getId() {
         return id;
@@ -60,6 +73,55 @@ public class Topic {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public int getPassCount() {
+        return passCount;
+    }
+
+    public void setPassCount(int passCount) {
+        this.passCount = passCount;
+    }
+
+    public int getFailCount() {
+        return failCount;
+    }
+
+    public void setFailCount(int failCount) {
+        this.failCount = failCount;
+    }
+
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "id=" + id +
+                ", topicName='" + topicName + '\'' +
+                ", timeLimit=" + timeLimit +
+                ", spaceLimit=" + spaceLimit +
+                ", topicIntro='" + topicIntro + '\'' +
+                ", inputIntro='" + inputIntro + '\'' +
+                ", outputIntro='" + outputIntro + '\'' +
+                ", topicPs='" + topicPs + '\'' +
+                ", topicLevel=" + topicLevel +
+                ", passCount=" + passCount +
+                ", failCount=" + failCount +
+                ", passRate=" + passRate +
+                ", answers=" + answers +
+                ", discussions=" + discussions +
+                ", knowledgePointsTopics=" + knowledgePointsTopics +
+                ", notes=" + notes +
+                ", solutions=" + solutions +
+                ", useCaseTopics=" + useCaseTopics +
+                ", userFavoriteTopics=" + userFavoriteTopics +
+                '}';
+    }
+
+    public double getPassRate() {
+        return passRate;
+    }
+
+    public void setPassRate(double passRate) {
+        this.passRate = passRate;
     }
 
     public String getTopicName() {
@@ -166,14 +228,6 @@ public class Topic {
         this.useCaseTopics = useCaseTopics;
     }
 
-    public List<UserFavoriteSolution> getUserFavoriteSolutions() {
-        return userFavoriteSolutions;
-    }
-
-    public void setUserFavoriteSolutions(List<UserFavoriteSolution> userFavoriteSolutions) {
-        this.userFavoriteSolutions = userFavoriteSolutions;
-    }
-
     public List<UserFavoriteTopic> getUserFavoriteTopics() {
         return userFavoriteTopics;
     }
@@ -182,25 +236,4 @@ public class Topic {
         this.userFavoriteTopics = userFavoriteTopics;
     }
 
-    @Override
-    public String toString() {
-        return "Topic{" +
-                "id=" + id +
-                ", topicName='" + topicName + '\'' +
-                ", timeLimit=" + timeLimit +
-                ", spaceLimit=" + spaceLimit +
-                ", topicIntro='" + topicIntro + '\'' +
-                ", inputIntro='" + inputIntro + '\'' +
-                ", outputIntro='" + outputIntro + '\'' +
-                ", topicPs='" + topicPs + '\'' +
-                ", answers=" + answers +
-                ", discussions=" + discussions +
-                ", knowledgePointsTopics=" + knowledgePointsTopics +
-                ", notes=" + notes +
-                ", solutions=" + solutions +
-                ", useCaseTopics=" + useCaseTopics +
-                ", userFavoriteSolutions=" + userFavoriteSolutions +
-                ", userFavoriteTopics=" + userFavoriteTopics +
-                '}';
-    }
 }

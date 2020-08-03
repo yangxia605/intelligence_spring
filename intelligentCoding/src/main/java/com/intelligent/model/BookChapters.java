@@ -23,7 +23,7 @@ public class BookChapters {
     private String chapterFile;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"bookChapters"})
     @JoinColumn(name = "booksId", insertable = false, updatable = false, nullable = false)
     private Books books;
 

@@ -38,4 +38,8 @@ public interface UsersDao extends JpaRepository<Users, Integer>{
 
     // 删除操作类似
 
+    // 返回用户做题的信息
+    @Query(nativeQuery = true, value = "select * from users as u, answer as a, topic where u.id=a.user_id and u.id=?1")
+    public Users getById(int userId);
+
 }

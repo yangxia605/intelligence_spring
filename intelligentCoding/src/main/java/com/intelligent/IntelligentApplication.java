@@ -11,7 +11,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-@ComponentScan(basePackages = {"com.intelligent.dao", "com.intelligent.controller","com.intelligent.config"})
+@ComponentScan(basePackages = {"com.intelligent.dao", "com.intelligent.controller","com.intelligent.config", "com.intelligent.service.impl"})
+@MapperScan("com.intelligent.controller")
 public class IntelligentApplication {
 
 	public static void main(String[] args) {

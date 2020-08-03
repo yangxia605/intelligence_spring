@@ -16,12 +16,12 @@ public class UseCaseTopic {
     private Integer topicId;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"useCaseTopics"})
     @JoinColumn(name = "useCaseId", insertable = false, updatable = false, nullable = false)
     private UseCase useCase;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"useCaseTopics"})
     @JoinColumn(name = "topicId", insertable = false, updatable = false, nullable = false)
     private Topic topic;
 

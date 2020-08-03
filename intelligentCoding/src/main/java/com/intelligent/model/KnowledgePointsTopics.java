@@ -18,12 +18,12 @@ public class KnowledgePointsTopics {
     private Integer topicId;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"knowledgePointsTopics"})
     @JoinColumn(name = "knowledgePointsId",insertable = false,updatable = false,nullable = false)
     private KnowledgePoints knowledgePoints;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"knowledgePointsTopics"})
     @JoinColumn(name = "topicId",insertable = false,updatable = false,nullable = false)
     private Topic topic;
 

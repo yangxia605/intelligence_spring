@@ -25,13 +25,20 @@ public class Answer {
     private Integer memory;
     private String status;
 
+    @Column(insertable = false, columnDefinition = "boolean default false")
+    private Boolean isPass;
+    @Column(insertable = false, columnDefinition = "int default 0")
+    private int succCount = 0;
+    @Column(insertable = false, columnDefinition = "int default 0")
+    private int failCount = 0;
+
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"answers", "discussions", "solutions", "userFavoriteSolutions", "userFavoriteTopics", "note"})
     @JoinColumn(name = "userId", insertable = false, updatable = false, nullable = false)
     private Users users;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"answers", "discussions", "solutions", "userFavoriteTopics",  "note"})
     @JoinColumn(name = "topicId", insertable = false, updatable = false, nullable = false)
     private Topic topic;
 
@@ -107,6 +114,29 @@ public class Answer {
         this.topic = topic;
     }
 
+    public Boolean getPass() {
+        return isPass;
+    }
+
+    public void setPass(Boolean pass) {
+        isPass = pass;
+    }
+
+    public int getSuccCount() {
+        return succCount;
+    }
+
+    public void setSuccCount(int succCount) {
+        this.succCount = succCount;
+    }
+
+    public int getFailCount() {
+        return failCount;
+    }
+
+    public void setFailCount(int failCount) {
+        this.failCount = failCount;
+    }
 
     @Override
     public String toString() {
@@ -118,6 +148,9 @@ public class Answer {
                 ", submitTime=" + submitTime +
                 ", memory=" + memory +
                 ", status='" + status + '\'' +
+                ", isPass=" + isPass +
+                ", succCount=" + succCount +
+                ", failCount=" + failCount +
                 ", users=" + users +
                 ", topic=" + topic +
                 '}';

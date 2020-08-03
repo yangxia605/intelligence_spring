@@ -27,12 +27,12 @@ public class Discussion {
     private Integer likeNum = 0;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"discussions", "answers", "solutions", "userFavoriteSolutions", "userFavoriteTopics", "note"})
     @JoinColumn(name = "userId", insertable = false, updatable = false, nullable = false)
     private Users users;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"discussions", "answers", "solutions", "userFavoriteTopics",  "note"})
     @JoinColumn(name = "topicId", insertable = false, updatable = false, nullable = false)
     private Topic topic;
 

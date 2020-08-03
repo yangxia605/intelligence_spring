@@ -16,12 +16,12 @@ public class UserFavoriteTopic {
     private Integer topicId;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"userFavoriteTopics"})
     @JoinColumn(name = "userId", insertable = false, updatable = false, nullable = false)
     private Users users;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"userFavoriteTopics", "answers", "discussions", "solutions"})
     @JoinColumn(name = "topicId", insertable = false, updatable = false, nullable = false)
     private Topic topic;
 

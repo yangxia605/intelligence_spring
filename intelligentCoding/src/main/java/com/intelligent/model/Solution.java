@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 //@Table(uniqueConstraints = @UniqueConstraint(name = "solution_users_topic", columnNames = {"user_id", "topic_id"}))
@@ -19,6 +20,31 @@ public class Solution {
     private Integer userId;
     @NotNull
     private Integer topicId;
+
+    public UserFavoriteSolution getUserFavoriteSolution() {
+        return userFavoriteSolution;
+    }
+
+    @Override
+    public String toString() {
+        return "Solution{" +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", userId=" + userId +
+                ", topicId=" + topicId +
+                ", content='" + content + '\'' +
+                ", submitTime=" + submitTime +
+                ", likeNum=" + likeNum +
+                ", users=" + users +
+                ", topic=" + topic +
+                ", userFavoriteSolution=" + userFavoriteSolution +
+                '}';
+    }
+
+    public void setUserFavoriteSolution(UserFavoriteSolution userFavoriteSolution) {
+        this.userFavoriteSolution = userFavoriteSolution;
+    }
+
     @NotNull
     private String content;
     @NotNull
@@ -27,14 +53,19 @@ public class Solution {
     private Integer likeNum = 0;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"solutions"})
     @JoinColumn(name = "userId", insertable = false, updatable = false, nullable = false)
     private Users users;
 
     @ManyToOne
-    @JsonIgnoreProperties({})
+    @JsonIgnoreProperties({"solutions"})
     @JoinColumn(name = "topicId", insertable = false, updatable = false, nullable = false)
     private Topic topic;
+
+    @ManyToOne
+    @JsonIgnoreProperties({"solutions"})
+    @JoinColumn(name = "solutionId", insertable = false, unique = false, nullable = false)
+    private UserFavoriteSolution userFavoriteSolution;
 
     public Integer getId() {
         return id;
@@ -108,18 +139,5 @@ public class Solution {
         this.topic = topic;
     }
 
-    @Override
-    public String toString() {
-        return "Solution{" +
-                "id=" + id +
-                ", parentId=" + parentId +
-                ", userId=" + userId +
-                ", topicId=" + topicId +
-                ", content='" + content + '\'' +
-                ", submitTime=" + submitTime +
-                ", likeNum=" + likeNum +
-                ", users=" + users +
-                ", topic=" + topic +
-                '}';
-    }
+
 }
