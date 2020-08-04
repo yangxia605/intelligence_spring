@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45a411e0-9a8a-48fb-8409-04a67176a2c6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/UserFavoriteTopicService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/UserFavoriteTopicServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/util/UserContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_15.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/LanguageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/dao/LanguageDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/model/Language.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/LanguagesService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/LanguageImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/TopicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/UserFavoriteTopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/UserFavoriteTopicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/dao/TopicMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/dao/TopicMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/dao/UserFavoriteTopicDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/dao/UserFavoriteTopicDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligentCoding/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/interceptor/JwtAuthTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/interceptor/JwtAuthTokenFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/TopicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/UserDetailsServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +52,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.37606838" />
@@ -155,7 +150,8 @@
       <workItem from="1596240491375" duration="128000" />
       <workItem from="1596332507876" duration="25257000" />
       <workItem from="1596413407801" duration="19298000" />
-      <workItem from="1596459523433" duration="6502000" />
+      <workItem from="1596459523433" duration="7149000" />
+      <workItem from="1596544519333" duration="2260000" />
     </task>
     <task id="LOCAL-00001" summary="注册功能后端">
       <created>1594083856105</created>
@@ -203,22 +199,34 @@
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
     <state x="1864" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596462051482" />
-    <state width="1878" height="414" key="GridCell.Tab.0.bottom" timestamp="1596466346468">
+    <state x="2213" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1596553170831">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="414" key="GridCell.Tab.0.bottom/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596466346468" />
-    <state width="1878" height="414" key="GridCell.Tab.0.center" timestamp="1596466346467">
+    <state x="2213" y="248" key="#com.intellij.ide.util.MemberChooser/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596553170831" />
+    <state x="2025" y="186" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596552840451">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="414" key="GridCell.Tab.0.center/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596466346467" />
-    <state width="1878" height="414" key="GridCell.Tab.0.left" timestamp="1596466346466">
+    <state x="2025" y="186" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596552840451" />
+    <state width="1878" height="414" key="GridCell.Tab.0.bottom" timestamp="1596553269235">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="414" key="GridCell.Tab.0.left/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596466346466" />
-    <state width="1878" height="414" key="GridCell.Tab.0.right" timestamp="1596466346468">
+    <state width="1878" height="414" key="GridCell.Tab.0.bottom/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596553269235" />
+    <state width="1878" height="414" key="GridCell.Tab.0.bottom/1440.0.1920.1080/0.23.1440.877@1440.0.1920.1080" timestamp="1596467035590" />
+    <state width="1878" height="414" key="GridCell.Tab.0.center" timestamp="1596553269234">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="414" key="GridCell.Tab.0.right/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596466346468" />
+    <state width="1878" height="414" key="GridCell.Tab.0.center/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596553269234" />
+    <state width="1878" height="414" key="GridCell.Tab.0.center/1440.0.1920.1080/0.23.1440.877@1440.0.1920.1080" timestamp="1596467035589" />
+    <state width="1878" height="414" key="GridCell.Tab.0.left" timestamp="1596553269233">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="414" key="GridCell.Tab.0.left/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596553269233" />
+    <state width="1878" height="414" key="GridCell.Tab.0.left/1440.0.1920.1080/0.23.1440.877@1440.0.1920.1080" timestamp="1596467035588" />
+    <state width="1878" height="414" key="GridCell.Tab.0.right" timestamp="1596553269235">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="414" key="GridCell.Tab.0.right/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596553269235" />
+    <state width="1878" height="414" key="GridCell.Tab.0.right/1440.0.1920.1080/0.23.1440.877@1440.0.1920.1080" timestamp="1596467035589" />
     <state width="1878" height="535" key="GridCell.Tab.1.bottom" timestamp="1596461765480">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
@@ -235,6 +243,10 @@
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="535" key="GridCell.Tab.1.right/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596461765480" />
+    <state x="2000" y="280" key="Vcs.Push.Dialog.v2" timestamp="1596466780668">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2000" y="280" key="Vcs.Push.Dialog.v2/1440.0.1920.1080/0.0.1440.900@1440.0.1920.1080" timestamp="1596466780668" />
   </component>
   <component name="masterDetails">
     <states>

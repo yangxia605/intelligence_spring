@@ -1,6 +1,6 @@
 package com.intelligent.interceptor;
 
-import com.intelligent.service.UserDetailsServiceImpl;
+import com.intelligent.service.impl.UserDetailsServiceImpl;
 import com.intelligent.util.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

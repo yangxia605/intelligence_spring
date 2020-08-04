@@ -2,7 +2,7 @@ package com.intelligent.config;
 
 import com.intelligent.interceptor.JwtAuthEntryPoint;
 import com.intelligent.interceptor.JwtAuthTokenFilter;
-import com.intelligent.service.UserDetailsServiceImpl;
+import com.intelligent.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

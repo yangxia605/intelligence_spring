@@ -1,4 +1,4 @@
-package com.intelligent.service;
+package com.intelligent.service.impl;
 
 import com.intelligent.dao.UsersDao;
 import com.intelligent.model.Users;
