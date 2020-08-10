@@ -65,4 +65,15 @@ public class UserFavoriteTopicController {
         }
         return response;
     }
+
+    //取消题目收藏
+    // 添加收藏题目
+    @DeleteMapping(path = "cancel-favorite-topic/{topicId}")  //URL地址
+    public Response cancelFavoriteTopicByTid(@PathVariable int topicId) {
+        Users user = UserContext.getCurrentUser();
+        userFavoriteTopicService.cancelFavoriteTopicByTid(topicId, user.getId());
+        Response response = new Response();
+        response.setSuccess(true);
+        return response;
+    }
 }

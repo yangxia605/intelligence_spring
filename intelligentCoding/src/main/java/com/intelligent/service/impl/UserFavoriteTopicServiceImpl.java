@@ -19,4 +19,10 @@ public class UserFavoriteTopicServiceImpl implements UserFavoriteTopicService {
         return userFavoriteTopicDao.save(userFavoriteTopic);
     }
 
+    @Override
+    public void cancelFavoriteTopicByTid(int tid, int uid) {
+        UserFavoriteTopic userFavoriteTopic = userFavoriteTopicDao.findByUserIdAndTopicId(uid, tid);
+        userFavoriteTopicDao.delete(userFavoriteTopic);
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.intelligent.dao;
 
+import com.intelligent.model.Roles;
 import com.intelligent.model.UserFavoriteTopic;
+import com.intelligent.type.RoleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,4 +14,5 @@ public interface UserFavoriteTopicDao extends JpaRepository<UserFavoriteTopic, I
     @Query(nativeQuery = true, value = "select topic_id from user_favorite_topic where user_id=?1")
     int[] getFavoriteTidByuid(int uid);
 
+    UserFavoriteTopic findByUserIdAndTopicId(int userId, int topicId);
 }
