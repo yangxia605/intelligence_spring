@@ -13,7 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.swing.*;
 
-@SwingContainer
 @Configuration //必须存在
 public class SwaggerConfig {
     @Bean

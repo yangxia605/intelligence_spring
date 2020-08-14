@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45a411e0-9a8a-48fb-8409-04a67176a2c6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_3_1_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_3_3_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_3_3_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_3_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/pom.xml" afterPath="$PROJECT_DIR$/intelligentCoding/pom.xml" />
       <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/SwaggerConfig.java" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/SwaggerConfig.java" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/TopicController.java" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/TopicController.java" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/Result.java" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/Result.java" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/dao/TopicMapper.java" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/dao/TopicMapper.java" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/model/Topic.java" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/model/Topic.java" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/TopicService.java" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/TopicService.java" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/intelligentCoding/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,22 +18,19 @@
       <file leaf-file-name="TopicController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/TopicController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
+            <state relative-caret-position="5319">
               <caret line="217" column="26" lean-forward="false" selection-start-line="217" selection-start-column="26" selection-end-line="217" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IntelligentApplication.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IntelligentApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/IntelligentApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-              <folding>
-                <element signature="e#1071#1072#0" expanded="true" />
-                <element signature="e#1144#1145#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="297">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="66" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,18 +38,8 @@
       <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebSecurityConfigurerAdapter.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.3.3.RELEASE/spring-security-config-5.3.3.RELEASE.jar!/org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-462">
-              <caret line="60" column="22" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+            <state relative-caret-position="224">
+              <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -80,7 +55,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Response.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Response.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/Response.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
@@ -93,9 +68,23 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/intelligentCoding/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="41" column="47" lean-forward="false" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="47" />
+            <state relative-caret-position="214">
+              <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SwaggerConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/SwaggerConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#809#810#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/Result.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+              <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
               <folding>
                 <element signature="e#508#509#0" expanded="true" />
                 <element signature="e#538#539#0" expanded="true" />
@@ -116,7 +105,7 @@
       <file leaf-file-name="TopicServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
+            <state relative-caret-position="2403">
               <caret line="107" column="39" lean-forward="false" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
               <folding />
             </state>
@@ -126,7 +115,7 @@
       <file leaf-file-name="UserPassMessage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/UserPassMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
+            <state relative-caret-position="270">
               <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
               <folding>
                 <element signature="e#221#222#0" expanded="true" />
@@ -165,8 +154,8 @@
       <find>PassRate</find>
       <find>online_9</find>
       <find>online_8</find>
-      <find>swagger</find>
       <find>sec</find>
+      <find>swagger</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,7 +174,6 @@
         <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/dao/UsersDao.java" />
         <option value="$PROJECT_DIR$/intelligentCoding/pom.xml" />
         <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/IntelligentApplication.java" />
-        <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/SwaggerConfig.java" />
         <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/Result.java" />
         <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/model/Topic.java" />
         <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/TopicService.java" />
@@ -194,6 +182,7 @@
         <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/UserPassMessage.java" />
         <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java" />
         <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/Response.java" />
+        <option value="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/SwaggerConfig.java" />
       </list>
     </option>
   </component>
@@ -203,7 +192,13 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-11" />
     <option name="y" value="-11" />
     <option name="width" value="982" />
@@ -225,6 +220,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -366,7 +362,6 @@
       </pane>
       <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -558,7 +553,8 @@
       <workItem from="1596544519333" duration="2260000" />
       <workItem from="1597372916785" duration="4595000" />
       <workItem from="1597378188077" duration="5558000" />
-      <workItem from="1597386950812" duration="3383000" />
+      <workItem from="1597386950812" duration="4135000" />
+      <workItem from="1597392607965" duration="1914000" />
     </task>
     <task id="LOCAL-00001" summary="注册功能后端">
       <created>1594083856105</created>
@@ -578,14 +574,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13536000" />
+    <option name="totallyTimeSpent" value="16202000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1056" extended-state="7" />
+    <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991362" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -602,7 +598,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298122" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7300469" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298122" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298122" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298122" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2586393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -630,6 +626,14 @@
               </option>
               <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
                 <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
               </option>
             </State>
           </value>
@@ -713,7 +717,7 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -739,8 +743,8 @@
         <state relative-caret-position="621">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1144#1145#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="false" />
+            <element signature="e#1144#1145#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -776,7 +780,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#809#810#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1020,14 +1028,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/SwaggerConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -1040,34 +1040,71 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="782" column="49" lean-forward="false" selection-start-line="782" selection-start-column="49" selection-end-line="782" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/IntelligentApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding>
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1144#1145#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.3.3.RELEASE/spring-security-config-5.3.3.RELEASE.jar!/org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-462">
+        <state relative-caret-position="189">
           <caret line="60" column="22" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/intelligentCoding/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="41" column="47" lean-forward="false" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="47" />
-          <folding />
+          <folding>
+            <marker date="1596504303182" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1596504303182" expanded="false" signature="188:3606" ph="..." />
+            <marker date="1596504303182" expanded="false" signature="4465:4476" ph=" { " />
+            <marker date="1596504303182" expanded="false" signature="4488:4494" ph=" }" />
+            <marker date="1596504303182" expanded="true" signature="4564:5161" ph="{...}" />
+            <marker date="1596504303182" expanded="false" signature="4760:4844" ph="postProcess(object) → {" />
+            <marker date="1596504303182" expanded="false" signature="5023:5038" ph="}" />
+            <marker date="1596504303182" expanded="true" signature="5244:5312" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="5374:7118" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="7198:7327" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="7406:7967" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="8041:8343" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="8399:8701" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="8758:9093" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="8874:9085" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="9155:9162" ph="{}" />
+            <marker date="1596504303182" expanded="true" signature="9229:9532" ph="{...}" />
+            <marker date="1596504303182" expanded="false" signature="9596:9607" ph=" { " />
+            <marker date="1596504303182" expanded="false" signature="9627:9633" ph=" }" />
+            <marker date="1596504303182" expanded="true" signature="9716:10971" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="10341:10964" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="10434:10622" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="10746:10954" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="10977:11019" ph="@{...}" />
+            <marker date="1596504303182" expanded="false" signature="11095:11106" ph=" { " />
+            <marker date="1596504303182" expanded="false" signature="11141:11147" ph=" }" />
+            <marker date="1596504303182" expanded="true" signature="11153:11195" ph="@{...}" />
+            <marker date="1596504303182" expanded="true" signature="11296:11373" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="11478:11541" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="11662:11741" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="11818:12122" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="12180:12689" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="12755:14384" ph="{...}" />
+            <marker date="1596504303182" expanded="false" signature="12928:12943" ph=" { " />
+            <marker date="1596504303182" expanded="false" signature="12988:12998" ph=" }" />
+            <marker date="1596504303182" expanded="false" signature="13054:13069" ph=" { " />
+            <marker date="1596504303182" expanded="false" signature="13122:13132" ph=" }" />
+            <marker date="1596504303182" expanded="true" signature="13215:13310" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="13375:13465" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="13520:14029" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="14082:14275" ph="{...}" />
+            <marker date="1596504303182" expanded="false" signature="14309:14324" ph=" { " />
+            <marker date="1596504303182" expanded="false" signature="14368:14378" ph=" }" />
+            <marker date="1596504303182" expanded="true" signature="14491:15664" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="14698:14815" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="14941:15086" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="15204:15341" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="15508:15658" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="15753:18497" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="16079:16601" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="16708:17274" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="17384:17602" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="17686:18491" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="18580:20370" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="18847:19134" ph="{...}" />
+            <marker date="1596504303182" expanded="true" signature="19232:20364" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1081,7 +1118,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/UserPassMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
+        <state relative-caret-position="270">
           <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
           <folding>
             <element signature="e#221#222#0" expanded="true" />
@@ -1106,7 +1143,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/TopicController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
+        <state relative-caret-position="5319">
           <caret line="217" column="26" lean-forward="false" selection-start-line="217" selection-start-column="26" selection-end-line="217" selection-end-column="26" />
           <folding />
         </state>
@@ -1114,16 +1151,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
+        <state relative-caret-position="2403">
           <caret line="107" column="39" lean-forward="false" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1131,7 +1160,7 @@
     <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/type/Result.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
-          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
           <folding>
             <element signature="e#508#509#0" expanded="true" />
             <element signature="e#538#539#0" expanded="true" />
@@ -1143,6 +1172,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intelligentCoding/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/config/SwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#809#810#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/IntelligentApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="66" />
           <folding />
         </state>
       </provider>
