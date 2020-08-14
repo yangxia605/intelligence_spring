@@ -39,7 +39,7 @@ public interface TopicMapper {
     // 根据通过率排序
     @Select(value = "select * from topic as t order by t.pass_rate, t.id")
     List<Topic> getTopicByRate();
-    // 根据通过率排序
+    // 根据通过率倒序排序
     @Select(value = "select * from topic as t order by t.pass_rate desc, t.id")
     List<Topic> getTopicByRateDesc();
 
@@ -47,4 +47,21 @@ public interface TopicMapper {
     // 根据topic id筛选出该题目信息
     @Select(value = "select * from topic where topic.id =#{id}")
     Topic getById(@Param("id")Integer id);
+
+    // 获取总题目数量
+    @Select(value = "select count(t.*) as total from topic as t")
+    int getTotal();
+
+    // 获取挑战题目数量
+    @Select(value = "select count (*) from users u, answer a where u.id=a.user_id and u.id=#{userId}")
+    int getChallenge(int userId);
+
+    // 获取通过题数
+    @Select(value = "select count(*) from users u, answer a where u.id=a.user_id and u.id=#{userId} and u.is_pass=true")
+    int getPass(int userId);
+
+    // 获取提交总数
+    @Select(value = "select sum(a.succ_count + a.fail_count) from users u, answer a where u.id=a.user_id and u.id=#{userId}")
+    int getPost(int userId);
+
 }
