@@ -1,12 +1,19 @@
 package com.intelligent.controller.type;
 
-import java.util.List;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-public class Result {
+import java.util.List;
+//@ApiModel("Result")
+public class Result<T> {
+//    @ApiModelProperty(value = "success")
     private boolean success;
+//    @ApiModelProperty(value = "message")
     private String message;
+//    @ApiModelProperty(value = "code")
     private Integer code;
-    private List<Object> data;
+//    @ApiModelProperty(value = "data")
+    private List<T> data;
 
     public boolean isSuccess() {
         return success;
@@ -32,7 +39,7 @@ public class Result {
         this.code = code;
     }
 
-    public List<Object> getData() {
+    public List<T> getData() {
         return data;
     }
 

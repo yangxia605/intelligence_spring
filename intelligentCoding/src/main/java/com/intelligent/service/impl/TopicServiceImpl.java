@@ -3,6 +3,7 @@ package com.intelligent.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.intelligent.controller.type.PageRequest;
 import com.intelligent.controller.type.Result;
+import com.intelligent.controller.type.UserPassMessage;
 import com.intelligent.dao.TopicMapper;
 import com.intelligent.model.Topic;
 import com.intelligent.service.TopicService;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TopicServiceImpl implements TopicService {
@@ -97,5 +100,15 @@ public class TopicServiceImpl implements TopicService {
         list = topicMapper.getTopicByRateDesc();
         result.setData(list);
         return result;
+    }
+
+    @Override
+    public UserPassMessage getUserPass(int uid) {
+        UserPassMessage userPassMessage = new UserPassMessage();
+        userPassMessage.setTotalTopics(topicMapper.getTotal());
+        userPassMessage.setChallengeCount(topicMapper.getChallenge(uid));
+        userPassMessage.setPassCount(topicMapper.getPass(uid));
+        userPassMessage.setPostCount(topicMapper.getPost(uid));
+        return userPassMessage;
     }
 }

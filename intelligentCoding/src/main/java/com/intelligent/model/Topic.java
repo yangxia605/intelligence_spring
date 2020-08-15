@@ -2,6 +2,7 @@ package com.intelligent.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;

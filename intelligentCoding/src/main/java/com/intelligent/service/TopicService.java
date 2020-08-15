@@ -2,9 +2,11 @@ package com.intelligent.service;
 
 import com.intelligent.controller.type.PageRequest;
 import com.intelligent.controller.type.Result;
+import com.intelligent.controller.type.UserPassMessage;
 import com.intelligent.model.Topic;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TopicService {
 
@@ -31,4 +33,7 @@ public interface TopicService {
     Result getTopicByRate(PageRequest pageRequest);
     // 根据通过率逆序
     Result getTopicByRateDesc(PageRequest pageRequest);
+
+    // 获取用户的提交信息
+    UserPassMessage getUserPass(int uid);
 }
