@@ -4,6 +4,7 @@ import com.intelligent.controller.type.PageRequest;
 import com.intelligent.controller.type.Result;
 import com.intelligent.controller.type.UserPassMessage;
 import com.intelligent.model.Topic;
+import com.intelligent.type.TopicWithUserFavorite;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ public interface TopicService {
     Result getByKeyword(String keyword, PageRequest pageRequest);
 
     // tid查询题目完整信息
-    Topic getTopicByTid(int tid);
+    TopicWithUserFavorite getTopicByTid(int userId, int tid);
 
     // 通过题目难度查找题目
     Result getTopicByLevel(int level, PageRequest pageRequest);
