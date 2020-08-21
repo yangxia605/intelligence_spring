@@ -70,8 +70,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api-docs/**",
                         "/favicon.ico"
                 ).permitAll()
-                .anyRequest().authenticated()
-                .and()
+                .anyRequest().authenticated().and()
+                .cors().and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
