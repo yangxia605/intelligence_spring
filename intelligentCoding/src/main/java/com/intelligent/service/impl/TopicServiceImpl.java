@@ -36,8 +36,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result getAll(PageRequest pageRequest) {
-        Result result = new Result();
+    public Result<List<Topic>> getAll(PageRequest pageRequest) {
+        Result<List<Topic>> result = new Result<>();
         int page = pageRequest.getPage();
         int offset = pageRequest.getOffset();
         PageHelper.startPage(page, offset);
@@ -47,8 +47,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result getByKeyword(String keyword, PageRequest pageRequest) {
-        Result result = new Result();
+    public Result<List<Topic>> getByKeyword(String keyword, PageRequest pageRequest) {
+        Result<List<Topic>> result = new Result<>();
         int page = pageRequest.getPage();
         int offset = pageRequest.getOffset();
         List<Topic> list = new ArrayList<>();
@@ -72,8 +72,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result getTopicByLevel(int level, PageRequest pageRequest) {
-        Result result = new Result();
+    public Result<List<Topic>> getTopicByLevel(int level, PageRequest pageRequest) {
+        Result<List<Topic>> result = new Result<>();
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
         list = topicMapper.getTopicByLevel(level);
@@ -82,8 +82,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result getTopicByDesc(PageRequest pageRequest) {
-        Result result = new Result();
+    public Result<List<Topic>> getTopicByDesc(PageRequest pageRequest) {
+        Result<List<Topic>> result = new Result<>();
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
         list = topicMapper.getTopicByDesc();
@@ -100,8 +100,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result getTopicByRate(PageRequest pageRequest) {
-        Result result = new Result();
+    public Result<List<Topic>> getTopicByRate(PageRequest pageRequest) {
+        Result<List<Topic>> result = new Result<>();
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
         list = topicMapper.getTopicByRate();
@@ -110,8 +110,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result getTopicByRateDesc(PageRequest pageRequest) {
-        Result result = new Result();
+    public Result<List<Topic>> getTopicByRateDesc(PageRequest pageRequest) {
+        Result<List<Topic>> result = new Result<>();
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
         list = topicMapper.getTopicByRateDesc();

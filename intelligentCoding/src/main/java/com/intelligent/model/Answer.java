@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 //@Table(uniqueConstraints = @UniqueConstraint(name = "user_topic", columnNames = {"user_id", "topic_id"}))
@@ -21,7 +22,7 @@ public class Answer {
     @NotNull
     private String code;
     @NotNull
-    private Timestamp submitTime;
+    private LocalDateTime submitTime;
     private Integer memory;
     private String status;
 
@@ -74,11 +75,11 @@ public class Answer {
         this.code = code;
     }
 
-    public Timestamp getSubmitTime() {
+    public LocalDateTime getSubmitTime() {
         return submitTime;
     }
 
-    public void setSubmitTime(Timestamp submitTime) {
+    public void setSubmitTime(LocalDateTime submitTime) {
         this.submitTime = submitTime;
     }
 

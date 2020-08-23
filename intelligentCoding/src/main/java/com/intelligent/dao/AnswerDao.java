@@ -7,4 +7,5 @@ public interface AnswerDao extends JpaRepository<Answer, Integer>{
     /**
      * 数据库sql操作
      */
+    Answer findByUserIdAndTopicId(int userId, int topicId);
 }

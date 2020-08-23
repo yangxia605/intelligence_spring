@@ -276,8 +276,8 @@ public class TopicController {
      * online_5: 通过知识点筛选题目
      **/
     @RequestMapping(value = "getByTypes", method = RequestMethod.POST)
-    public Result<Topic> getTopicByTypes(@RequestParam("page") int page, @RequestParam("offset") int offset, @RequestBody List<Integer> types) {
-        Result pageResult = new Result();
+    public Result<List<Topic>> getTopicByTypes(@RequestParam("page") int page, @RequestParam("offset") int offset, @RequestBody List<Integer> types) {
+        Result<List<Topic>> pageResult = new Result<>();
         List<Topic> list = new ArrayList<>();
         int n = types.size();
         PageRequest pageRequest = new PageRequest();

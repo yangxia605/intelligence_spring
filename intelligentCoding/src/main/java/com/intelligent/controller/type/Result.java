@@ -13,7 +13,7 @@ public class Result<T> {
 //    @ApiModelProperty(value = "code")
     private Integer code;
 //    @ApiModelProperty(value = "data")
-    private List<T> data;
+    private T data;
 
     public boolean isSuccess() {
         return success;
@@ -39,11 +39,11 @@ public class Result<T> {
         this.code = code;
     }
 
-    public List<T> getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(List data) {
+    public void setData(T data) {
         this.data = data;
     }
 }
