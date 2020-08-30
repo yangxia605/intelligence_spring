@@ -7,6 +7,7 @@ import java.util.List;
 //@ApiModel("Result")
 public class Result<T> {
 //    @ApiModelProperty(value = "success")
+    //请求正常执行
     private boolean success;
 //    @ApiModelProperty(value = "message")
     private String message;
