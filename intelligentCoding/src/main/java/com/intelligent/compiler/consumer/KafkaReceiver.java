@@ -73,12 +73,14 @@ public class KafkaReceiver {
                     logger.error("", e);
                     answer.setStatus(AnswerStatus.FINISH_FAILED.name());
                     answer.setFailCount(answer.getFailCount() + 1);
+                    answer.setExecuteDetailMsg(e.getMessage());
                 }
             } catch (Exception e) {
                 //编译失败
                 logger.error("", e);
                 answer.setStatus(AnswerStatus.COMPILE_FAILED.name());
                 answer.setFailCount(answer.getFailCount() + 1);
+                answer.setExecuteDetailMsg(e.getMessage());
             }
         }
 
@@ -93,9 +95,11 @@ public class KafkaReceiver {
                 bw.write(answer.getCode());
                 bw.close();
             } catch (Exception e) {
-                //编译失败
+                //保存失败
                 logger.error("", e);
                 answer.setStatus(AnswerStatus.COMPILE_FAILED.name());
+                answer.setFailCount(answer.getFailCount() + 1);
+                answer.setExecuteDetailMsg(e.getMessage());
             }
         }
 

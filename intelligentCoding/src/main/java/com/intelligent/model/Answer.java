@@ -25,6 +25,7 @@ public class Answer {
     private LocalDateTime submitTime;
     private Integer memory;
     private String status;
+    private String executeDetailMsg;
 
     @Column(insertable = false, columnDefinition = "boolean default false")
     private Boolean isPass;
@@ -139,6 +140,14 @@ public class Answer {
         this.failCount = failCount;
     }
 
+    public String getExecuteDetailMsg() {
+        return executeDetailMsg;
+    }
+
+    public void setExecuteDetailMsg(String executeDetailMsg) {
+        this.executeDetailMsg = executeDetailMsg;
+    }
+
     @Override
     public String toString() {
         return "Answer{" +
@@ -150,6 +159,7 @@ public class Answer {
                 ", memory=" + memory +
                 ", status='" + status + '\'' +
                 ", isPass=" + isPass +
+                ", executeDetailMsg=" + executeDetailMsg +
                 ", succCount=" + succCount +
                 ", failCount=" + failCount +
                 ", users=" + users +
