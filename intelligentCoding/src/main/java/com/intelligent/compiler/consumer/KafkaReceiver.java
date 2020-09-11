@@ -5,6 +5,7 @@ import com.intelligent.compiler.beans.Message;
 import com.intelligent.dao.AnswerDao;
 import com.intelligent.model.Answer;
 import com.intelligent.type.AnswerStatus;
+import org.apache.commons.lang.StringUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,19 +62,27 @@ public class KafkaReceiver {
             createJavaFile(file);
             try {
                 //2 编译刚生成的文件
-                exec(COMPILE_CMD + FILE_NAME, file);
-                //3 运行
-                try {
-                    String result = exec(RUN_CMD + CLASS_FILE_NAME, file);
-                    logger.info("执行结果 {}", result);
-                    answer.setStatus(AnswerStatus.FINISH_SUCCESS.name());
-                    answer.setFailCount(answer.getSuccCount() + 1);
-                } catch (Exception e) {
-                    //执行失败
-                    logger.error("", e);
+                String compileResult = exec(COMPILE_CMD + FILE_NAME, file);
+                if (StringUtils.isNotBlank(compileResult)) {
+                    //编译有返回结果，说明编译失败
                     answer.setStatus(AnswerStatus.FINISH_FAILED.name());
                     answer.setFailCount(answer.getFailCount() + 1);
-                    answer.setExecuteDetailMsg(e.getMessage());
+                    answer.setExecuteDetailMsg(compileResult);
+                } else {
+                    //3 运行
+                    try {
+                        String result = exec(RUN_CMD + CLASS_FILE_NAME, file);
+                        logger.info("执行结果 {}", result);
+                        answer.setStatus(AnswerStatus.FINISH_SUCCESS.name());
+                        answer.setFailCount(answer.getSuccCount() + 1);
+                        answer.setExecuteDetailMsg("执行完成");
+                    } catch (Exception e) {
+                        //执行失败
+                        logger.error("", e);
+                        answer.setStatus(AnswerStatus.FINISH_FAILED.name());
+                        answer.setFailCount(answer.getFailCount() + 1);
+                        answer.setExecuteDetailMsg(e.getMessage());
+                    }
                 }
             } catch (Exception e) {
                 //编译失败

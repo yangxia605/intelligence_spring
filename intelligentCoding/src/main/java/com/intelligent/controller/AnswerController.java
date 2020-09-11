@@ -1,5 +1,6 @@
 package com.intelligent.controller;
 
+import com.intelligent.controller.type.AnswerExecuteDetailResponse;
 import com.intelligent.controller.type.AnswerRequest;
 import com.intelligent.controller.type.AnswerStatusResponse;
 import com.intelligent.controller.type.Result;
@@ -42,6 +43,16 @@ public class AnswerController {
         Result<AnswerStatusResponse> result = new Result<>();
         AnswerStatusResponse answerStatusResponse = answerService.getAnswerStatus(answerId);
         result.setData(answerStatusResponse);
+        result.setSuccess(true);
+        return result;
+    }
+
+    //传入当前答案ID，获得当前答案执行信息（编译失败、执行失败）
+    @GetMapping(path = "answer-execute-detail-msg/{answerId}")
+    public Result<AnswerExecuteDetailResponse> getAnswerExecuteMsg(@PathVariable("answerId") int answerId) {
+        Result<AnswerExecuteDetailResponse> result = new Result<>();
+        AnswerExecuteDetailResponse answerExecuteResponse = answerService.getAnswerExecuteMsg(answerId);
+        result.setData(answerExecuteResponse);
         result.setSuccess(true);
         return result;
     }

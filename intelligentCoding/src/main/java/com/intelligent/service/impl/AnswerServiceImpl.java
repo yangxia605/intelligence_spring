@@ -3,6 +3,7 @@ package com.intelligent.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intelligent.compiler.beans.Message;
+import com.intelligent.controller.type.AnswerExecuteDetailResponse;
 import com.intelligent.controller.type.AnswerRequest;
 import com.intelligent.controller.type.AnswerStatusResponse;
 import com.intelligent.dao.AnswerDao;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class AnswerServiceImpl implements AnswerService {
@@ -71,12 +73,27 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     public AnswerStatusResponse getAnswerStatus(int answerId) {
         AnswerStatusResponse answerStatusResponse = new AnswerStatusResponse();
-        String status = answerDao.findById(answerId).map(Answer::getStatus).orElse(null);
+        Answer answer = answerDao.findById(answerId).orElse(null);
         //todo 如果已经完毕，则还需要在返回中带上执行结果
-        answerStatusResponse.setAnswerStatus((Objects.equals(status, AnswerStatus.COMPILE_FAILED.name())
-                || Objects.equals(status, AnswerStatus.FINISH_SUCCESS.name())
-                || Objects.equals(status, AnswerStatus.FINISH_FAILED.name())));
+        if (answer != null && (Objects.equals(answer.getStatus(), AnswerStatus.COMPILE_FAILED.name())
+                || Objects.equals(answer.getStatus(), AnswerStatus.FINISH_SUCCESS.name())
+                || Objects.equals(answer.getStatus(), AnswerStatus.FINISH_FAILED.name()))) {
+            answerStatusResponse.setAnswerStatus(true);
+            answerStatusResponse.setExecuteDetailMsg(answer.getExecuteDetailMsg());
+            answerStatusResponse.setAnswerStatusMsg(answer.getStatus());
+        } else {
+            answerStatusResponse.setAnswerStatus(false);
+        }
 
         return answerStatusResponse;
+    }
+
+    @Override
+    public AnswerExecuteDetailResponse getAnswerExecuteMsg(int answerId) {
+        AnswerExecuteDetailResponse answerExecuteDetailResponse = new AnswerExecuteDetailResponse();
+        Optional<Answer> answer = answerDao.findById(answerId);
+        String msg = answer.map(Answer::getExecuteDetailMsg).orElse("未完成执行");
+        answerExecuteDetailResponse.setExecuteDetailMsg(msg);
+        return answerExecuteDetailResponse;
     }
 }
