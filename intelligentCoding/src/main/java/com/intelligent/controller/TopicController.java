@@ -2,6 +2,9 @@ package com.intelligent.controller;
 
 //import com.github.pagehelper.PageHelper;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.support.spring.MappingFastJsonValue;
+import com.intelligent.config.ElasticSearchConfig;
 import com.intelligent.controller.type.*;
 import com.intelligent.dao.TopicDao;
 import com.intelligent.dao.UsersDao;
@@ -9,14 +12,28 @@ import com.intelligent.model.Topic;
 import com.intelligent.model.Users;
 import com.intelligent.service.TopicService;
 import com.intelligent.type.TopicWithUserFavorite;
+import com.intelligent.util.ESconst;
 import com.intelligent.util.UserContext;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import net.sf.jsqlparser.statement.create.index.CreateIndex;
 import net.sf.jsqlparser.statement.select.Top;
+import org.apache.kafka.common.protocol.types.Field;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.indices.CreateIndexRequest;
+import org.elasticsearch.client.indices.CreateIndexResponse;
+import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.spring.web.json.Json;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +43,10 @@ import java.util.logging.Logger;
 public class TopicController {
     private final TopicDao topicDao;
     private final UsersDao usersDao;
+
+    @Autowired
+    private RestHighLevelClient restHighLevelClient;
+
     @Autowired
     private TopicService topicService;
     private static final Logger log = Logger.getLogger(TopicController.class.getName());
@@ -315,5 +336,36 @@ public class TopicController {
     }
 
     /** online_8: 全局搜索 **/
+
+    @RequestMapping(value = "testES", method = RequestMethod.POST)
+    public String toEs() throws IOException {
+        log.info(("开始导入数据到es中"));
+        long startTime = System.currentTimeMillis();
+        List<Users> usersList = getAllUsers();
+        // 先看看是不是有这个索引库，如果有的话就不执行创建索引操作了
+        GetIndexRequest getIndexRequest = new GetIndexRequest(ESconst.USER_INDEX);
+        boolean isExist = restHighLevelClient.indices().exists(getIndexRequest, RequestOptions.DEFAULT);
+        if (!isExist) {
+            CreateIndexRequest request = new CreateIndexRequest(ESconst.USER_INDEX);
+            CreateIndexResponse response = restHighLevelClient.indices().create(request, RequestOptions.DEFAULT);
+        }
+
+        // 执行批文档的创建
+        BulkRequest bulkRequest = new BulkRequest(ESconst.USER_INDEX);
+        for (Users user : usersList) {
+            IndexRequest indexRequest = new IndexRequest(ESconst.USER_INDEX).source(user);
+//            indexRequest.source();
+            indexRequest.id(user.getId().toString());
+            bulkRequest.add(indexRequest);
+        }
+        BulkResponse bulkResponse = restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+        return bulkResponse.toString();
+    }
+
+    public List<Users> getAllUsers() {
+        List<Users> userList = new ArrayList<>();
+        userList = usersDao.findAll();
+        return userList;
+    }
 
 }

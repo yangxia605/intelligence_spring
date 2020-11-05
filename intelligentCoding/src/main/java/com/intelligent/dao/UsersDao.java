@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.TransactionScoped;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -15,6 +16,9 @@ import java.util.Optional;
 public interface UsersDao extends JpaRepository<Users, Integer>{
     // JPA内置的数据库操作，一般多为查找操作，很方便但是有局限，一般可以自己写sql比较方便
     Optional<Users> findById(Integer id);
+
+    @Query(nativeQuery = true, value = "select * from users")
+    List<Users> findAll();
 
     // 用户名查询用户
     @Query(nativeQuery = true, value = "select * from users where name=?1")
