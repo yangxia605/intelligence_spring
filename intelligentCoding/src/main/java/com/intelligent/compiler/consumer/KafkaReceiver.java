@@ -10,17 +10,24 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.Closeable;
+import java.io.File;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.UUID;
-import java.util.function.Consumer;
+
+import static com.intelligent.compiler.Constants.CLASS_FILE_NAME;
+import static com.intelligent.compiler.Constants.FILE_NAME;
 
 @Component
 public class KafkaReceiver {
     public static Logger logger = LoggerFactory.getLogger(KafkaReceiver.class);
+    @Value("${intelligentcoding.template.path}")
+    private String templatePath;
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
@@ -32,7 +39,7 @@ public class KafkaReceiver {
         try {
             Message message = objectMapper.readValue(cr.value(), Message.class);
             Answer answer = answerDao.findById(message.getAnswerId()).get();
-            new AnswerCodeCompiler().accept(answer);
+            new AnswerCodeCompiler().accept(templatePath, answer);
             answerDao.save(answer);
         } catch (Exception e) {
             logger.error("", e);
@@ -40,26 +47,18 @@ public class KafkaReceiver {
 
     }
 
-    private static class AnswerCodeCompiler implements Consumer<Answer> {
-        private static final String COMPILE_PATH = "/tmp/";
+    private static class AnswerCodeCompiler {
         private static final String COMPILE_CMD = "javac ";
         private static final String RUN_CMD = "java ";
-        private static final String FILE_NAME = "Solution.java";
-        private static final String CLASS_FILE_NAME = "Solution";
         private Answer answer;
-        private String fullFileName;
 
-        @Override
-        public void accept(Answer answer) {
+        public void accept(String templatePath, Answer answer) {
             //把找到的answer的code拿出来编译，运行
-            logger.info("answer code {}", answer.getCode());
             this.answer = answer;
-            String fullPath = COMPILE_PATH + UUID.randomUUID().toString();
-            fullFileName = fullPath + "/" + FILE_NAME;
+            String path = String.format(templatePath, answer.getTopicId());
+            logger.info("answer code {} using template in {}", answer.getCode(), path);
 
-            //保存code到文件夹
-            File file = new File(fullPath);
-            createJavaFile(file);
+            File file = new JavaFileCreator(path, answer).creat();
             try {
                 //2 编译刚生成的文件
                 String compileResult = exec(COMPILE_CMD + FILE_NAME, file);
@@ -86,25 +85,6 @@ public class KafkaReceiver {
                 }
             } catch (Exception e) {
                 //编译失败
-                logger.error("", e);
-                answer.setStatus(AnswerStatus.COMPILE_FAILED.name());
-                answer.setFailCount(answer.getFailCount() + 1);
-                answer.setExecuteDetailMsg(e.getMessage());
-            }
-        }
-
-        private void createJavaFile(File path) {
-            try {
-                boolean mkdirs = path.mkdirs();
-                File file = new File(fullFileName);
-                boolean newFile = file.createNewFile();
-                logger.info("生成文件 {}", fullFileName);
-                FileWriter fw = new FileWriter(file.getAbsoluteFile());
-                BufferedWriter bw = new BufferedWriter(fw);
-                bw.write(answer.getCode());
-                bw.close();
-            } catch (Exception e) {
-                //保存失败
                 logger.error("", e);
                 answer.setStatus(AnswerStatus.COMPILE_FAILED.name());
                 answer.setFailCount(answer.getFailCount() + 1);
