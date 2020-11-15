@@ -94,6 +94,7 @@ public class KafkaReceiver {
 
         private String exec(String cmd, File dir) {
             StringBuilder result = new StringBuilder();
+            StringBuilder err = new StringBuilder();
 
             Process process = null;
             BufferedReader buffIn = null;
@@ -117,6 +118,10 @@ public class KafkaReceiver {
                 }
                 while ((line = buffError.readLine()) != null) {
                     result.append(line).append('\n');
+                    err.append(line).append('\n');
+                }
+                if (StringUtils.trimToNull(err.toString()) != null) {
+                    throw new RuntimeException(err.toString());
                 }
                 logger.info(result.toString());
             } catch (Exception e) {
