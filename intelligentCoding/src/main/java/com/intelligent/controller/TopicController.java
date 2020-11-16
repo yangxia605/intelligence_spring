@@ -31,7 +31,6 @@ import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.spring.web.json.Json;
 
 import java.io.IOException;
 import java.util.ArrayList;
