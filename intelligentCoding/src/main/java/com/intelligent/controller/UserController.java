@@ -92,9 +92,10 @@ public class UserController {
     // 获取用户信息
     @RequestMapping(value = "userInfo", method = RequestMethod.GET)
     public Map<String, Object> getuserInfo(final HttpServletRequest request) {
-        String name = request.getSession().getAttribute("userName").toString();
+        //String name = request.getSession().getAttribute("userName").toString();
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Map<String, Object> userInfo = new HashMap<String, Object>();
-        if (request.getSession().getAttribute("userName") != null) {
+        if (name != null) {
             Users user = usersDao.findByName(name);
             userInfo.put("username", user.getName());
             userInfo.put("location", user.getLocation());

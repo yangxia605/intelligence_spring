@@ -9,6 +9,7 @@ import com.intelligent.model.Users;
 import com.intelligent.service.UserFavoriteTopicService;
 import com.intelligent.util.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,10 +39,12 @@ public class UserFavoriteTopicController {
     @RequestMapping(value = "favoritetopics", method = RequestMethod.GET)
     public List<Map<String, Object>> getFavoriteTidByuid(final HttpServletRequest request) {
         List<Map<String, Object>> favoriteTopics = new ArrayList<Map<String, Object>>();
-        String name = request.getSession().getAttribute("userName").toString();
-        int uid = (int) request.getSession().getAttribute("userID");
+        //String name = request.getSession().getAttribute("userName").toString();
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        int uid = usersDao.findByName(name).getId();
+        //int uid = (int) request.getSession().getAttribute("userID");
         // 是否登录
-        if (request.getSession().getAttribute("userID") != null) {
+        if (usersDao.findByName(name).getId() != null) {
             int[] favoriteTidByuid = userFavoriteTopicDao.getFavoriteTidByuid(uid);
             if (favoriteTidByuid != null) {
                 for (int tempID : favoriteTidByuid) {
