@@ -211,6 +211,7 @@ public class TopicController {
     @RequestMapping(value = "getGlobalSearch", method = RequestMethod.GET)
     public Result getGlobalSearch(@RequestParam("keyword") String keyword) {
         Result result = new Result();
+        System.out.println("hhh");
         List<Topic> list = new ArrayList<>();
 
         return result;
