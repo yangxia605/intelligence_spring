@@ -1,6 +1,7 @@
 package com.intelligent.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.intelligent.controller.TopicController;
 import com.intelligent.controller.type.PageRequest;
 import com.intelligent.controller.type.Result;
@@ -36,13 +37,12 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result<List<Topic>> getAll(PageRequest pageRequest) {
-        Result<List<Topic>> result = new Result<>();
+    public PageInfo getAll(PageRequest pageRequest) {
         int page = pageRequest.getPage();
         int offset = pageRequest.getOffset();
         PageHelper.startPage(page, offset);
         List<Topic> list = topicMapper.getAll();
-        result.setData(list);
+        PageInfo result = new PageInfo(list);
         return result;
     }
 

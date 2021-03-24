@@ -2,6 +2,7 @@ package com.intelligent.controller;
 
 //import com.github.pagehelper.PageHelper;
 
+import com.github.pagehelper.PageInfo;
 import com.intelligent.controller.type.*;
 import com.intelligent.dao.TopicDao;
 import com.intelligent.dao.UsersDao;
@@ -238,8 +239,7 @@ public class TopicController {
 //    @ApiOperation(value = "题目列表")
 //    @ApiResponses(@ApiResponse(code = 200, message = "处理成功"))
     @RequestMapping(value = "getAllCoding", method = RequestMethod.POST)
-    public Result<Topic> getPage(@RequestBody PageRequest pageRequest) {
-        Result pageResult = new Result();
+    public PageInfo getPage(@RequestBody PageRequest pageRequest) {
         return topicService.getAll(pageRequest);
     }
 
@@ -268,7 +268,7 @@ public class TopicController {
     public Result<Topic> getTopicByDesc(@RequestParam("order") boolean order, @RequestBody PageRequest pageRequest) {
         Result pageResult = new Result();
         if (order) {
-            return topicService.getAll(pageRequest);
+//            return topicService.getAll(pageRequest);
         }
         return topicService.getTopicByDesc(pageRequest);
     }
@@ -311,7 +311,7 @@ public class TopicController {
     @RequestMapping(value = "getReset", method = RequestMethod.POST)
     public Result<Topic> getTopicReset(@RequestBody PageRequest pageRequest) {
         Result pageResult = new Result();
-        pageResult = topicService.getAll(pageRequest);
+//        pageResult = topicService.getAll(pageRequest);
         return pageResult;
     }
 

@@ -1,5 +1,6 @@
 package com.intelligent.service;
 
+import com.github.pagehelper.PageInfo;
 import com.intelligent.controller.type.PageRequest;
 import com.intelligent.controller.type.Result;
 import com.intelligent.controller.type.UserPassMessage;
@@ -13,7 +14,7 @@ public interface TopicService {
 
     List<Topic> findAll();
 
-    Result getAll(PageRequest pageRequest);
+    PageInfo getAll(PageRequest pageRequest);
 
     // 根据关键词查询题目
     Result getByKeyword(String keyword, PageRequest pageRequest);
