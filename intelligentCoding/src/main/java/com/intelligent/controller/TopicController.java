@@ -11,10 +11,6 @@ import com.intelligent.model.Users;
 import com.intelligent.service.TopicService;
 import com.intelligent.type.TopicWithUserFavorite;
 import com.intelligent.util.UserContext;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import net.sf.jsqlparser.statement.select.Top;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -247,16 +243,17 @@ public class TopicController {
      * online_2: 通过关键词找题目
      **/
     @RequestMapping(value = "getByPName", method = RequestMethod.POST)
-    public Result<Topic> getKeywords(@RequestParam("keywords") String keywords, @RequestBody PageRequest pageRequest) {
+    public PageInfo getKeywords(@RequestParam("keywords") String keywords, @RequestBody PageRequest pageRequest) {
         Result pageResult = new Result();
         return topicService.getByKeyword(keywords, pageRequest);
     }
 
     /**
      * online_3: 通过题目难度找题目
-     **/
+     *
+     * @return*/
     @RequestMapping(value = "getByLevel", method = RequestMethod.POST)
-    public Result<Topic> getTopicByLevel(@RequestParam("level") int level, @RequestBody PageRequest pageRequest) {
+    public PageInfo getTopicByLevel(@RequestParam("level") int level, @RequestBody PageRequest pageRequest) {
         Result pageResult = new Result();
         return topicService.getTopicByLevel(level, pageRequest);
     }
@@ -265,10 +262,10 @@ public class TopicController {
      * online_4: 按题号逆序选择题目
      **/
     @RequestMapping(value = "getByOrder", method = RequestMethod.POST)
-    public Result<Topic> getTopicByDesc(@RequestParam("order") boolean order, @RequestBody PageRequest pageRequest) {
+    public PageInfo getTopicByDesc(@RequestParam("order") boolean order, @RequestBody PageRequest pageRequest) {
         Result pageResult = new Result();
         if (order) {
-//            return topicService.getAll(pageRequest);
+            return topicService.getAll(pageRequest);
         }
         return topicService.getTopicByDesc(pageRequest);
     }
@@ -277,26 +274,22 @@ public class TopicController {
      * online_5: 通过知识点筛选题目
      **/
     @RequestMapping(value = "getByTypes", method = RequestMethod.POST)
-    public Result<List<Topic>> getTopicByTypes(@RequestParam("page") int page, @RequestParam("offset") int offset, @RequestBody List<Integer> types) {
+    public PageInfo getTopicByTypes(@RequestParam("page") int page, @RequestParam("offset") int offset, @RequestBody List<Integer> types) {
         Result<List<Topic>> pageResult = new Result<>();
         List<Topic> list = new ArrayList<>();
         int n = types.size();
         PageRequest pageRequest = new PageRequest();
         pageRequest.setPage(page);
         pageRequest.setOffset(offset);
-        for (int i = 0; i < n; i++) {
-            list.addAll(topicService.getTopicByTypes(types.get(i), pageRequest));
-        }
-        pageResult.setData(list);
-        return pageResult;
+        return topicService.getTopicByTypes(types, pageRequest);
     }
 
     /**
      * online_6: 通过题目通过率筛选题目
      **/
     @RequestMapping(value = "getByPassRate", method = RequestMethod.POST)
-    public Result<Topic> getTopicByRate(@RequestParam("rate") boolean rate, @RequestBody PageRequest pageRequest) {
-        Result pageResult = new Result();
+    public PageInfo getTopicByRate(@RequestParam("rate") boolean rate, @RequestBody PageRequest pageRequest) {
+        PageInfo pageResult;
         if (rate) {
             pageResult = topicService.getTopicByRate(pageRequest);
         } else {

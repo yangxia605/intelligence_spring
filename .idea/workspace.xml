@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fdb51884-012b-41e1-8226-598ab66de2f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligentCoding/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/controller/TopicController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/TopicService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligentCoding/src/main/java/com/intelligent/service/impl/TopicServiceImpl.java" afterDir="false" />
@@ -146,8 +145,16 @@
       <workItem from="1611194106809" duration="679000" />
       <workItem from="1614411125717" duration="17595000" />
       <workItem from="1615951397215" duration="14238000" />
-      <workItem from="1616233378288" duration="14948000" />
+      <workItem from="1616233378288" duration="17342000" />
     </task>
+    <task id="LOCAL-00001" summary="-分页接口p1">
+      <created>1616561808486</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616561808486</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,5 +204,9 @@
         <option value="1" />
       </set>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-分页接口p1" />
+    <option name="LAST_COMMIT_MESSAGE" value="-分页接口p1" />
   </component>
 </project>

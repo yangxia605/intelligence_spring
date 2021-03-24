@@ -47,14 +47,13 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result<List<Topic>> getByKeyword(String keyword, PageRequest pageRequest) {
-        Result<List<Topic>> result = new Result<>();
+    public PageInfo getByKeyword(String keyword, PageRequest pageRequest) {
         int page = pageRequest.getPage();
         int offset = pageRequest.getOffset();
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(page, offset);
         list = topicMapper.getByKeyword(keyword);
-        result.setData(list);
+        PageInfo result = new PageInfo(list);
         return result;
     }
 
@@ -72,50 +71,50 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Result<List<Topic>> getTopicByLevel(int level, PageRequest pageRequest) {
-        Result<List<Topic>> result = new Result<>();
+    public PageInfo getTopicByLevel(int level, PageRequest pageRequest) {
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
         list = topicMapper.getTopicByLevel(level);
-        result.setData(list);
+        PageInfo result = new PageInfo(list);
         return result;
     }
 
     @Override
-    public Result<List<Topic>> getTopicByDesc(PageRequest pageRequest) {
-        Result<List<Topic>> result = new Result<>();
+    public PageInfo getTopicByDesc(PageRequest pageRequest) {
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
         list = topicMapper.getTopicByDesc();
-        result.setData(list);
+        PageInfo result = new PageInfo(list);
         return result;
     }
 
     @Override
-    public List<Topic> getTopicByTypes(int type, PageRequest pageRequest) {
+    public PageInfo getTopicByTypes(List<Integer> type, PageRequest pageRequest) {
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
-        list = topicMapper.getTopicByTypes(type);
-        return list;
+        int n = type.size();
+        for (int i = 0; i < n; i++) {
+            list.addAll(topicMapper.getTopicByTypes(type.get(i)));
+        }
+        PageInfo result = new PageInfo(list);
+        return result;
     }
 
     @Override
-    public Result<List<Topic>> getTopicByRate(PageRequest pageRequest) {
-        Result<List<Topic>> result = new Result<>();
+    public PageInfo getTopicByRate(PageRequest pageRequest) {
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
         list = topicMapper.getTopicByRate();
-        result.setData(list);
+        PageInfo result = new PageInfo(list);
         return result;
     }
 
     @Override
-    public Result<List<Topic>> getTopicByRateDesc(PageRequest pageRequest) {
-        Result<List<Topic>> result = new Result<>();
+    public PageInfo getTopicByRateDesc(PageRequest pageRequest) {
         List<Topic> list = new ArrayList<>();
         PageHelper.startPage(pageRequest.getPage(), pageRequest.getOffset());
         list = topicMapper.getTopicByRateDesc();
-        result.setData(list);
+        PageInfo result = new PageInfo(list);
         return result;
     }
 
