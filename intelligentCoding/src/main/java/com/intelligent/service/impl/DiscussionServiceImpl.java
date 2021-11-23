@@ -1,30 +1,20 @@
 package com.intelligent.service.impl;
 
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.intelligent.controller.type.AnswerRequest;
 import com.intelligent.controller.type.DiscussionRequest;
-import com.intelligent.controller.type.PageRequest;
 import com.intelligent.dao.DiscussionDao;
-import com.intelligent.dao.DiscussionMapper;
-import com.intelligent.model.Answer;
 import com.intelligent.model.Discussion;
-import com.intelligent.model.Topic;
 import com.intelligent.service.DiscussionService;
-import com.intelligent.type.AnswerStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import sun.util.calendar.BaseCalendar;
-import sun.util.calendar.LocalGregorianCalendar;
 
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
-import java.time.LocalDateTime;
 
 @Service
 public class DiscussionServiceImpl implements DiscussionService {
@@ -32,64 +22,62 @@ public class DiscussionServiceImpl implements DiscussionService {
 
     @Autowired
     private DiscussionDao discussionDao;
-    @Autowired
-    private DiscussionMapper discussionMapper;
 
 
     // 获取所有讨论内容
     @Override
     public List<Discussion> findAll() {
-        return discussionMapper.selectAll();
+        return discussionDao.findAll();
     }
 
     // 根据题目ID查找讨论区内容
     @Override
-    public List<Discussion> getDisscussionByTopicId(int TopicId){
-        List<Discussion> discussions = discussionDao.getDisscussionByTopicId(TopicId);
+    public Map<Discussion,List<Discussion>> getDiscussionByTopicId(int TopicId){
+        List<Discussion> discussions = discussionDao.getDiscussionByTopicId(TopicId);
+        int total=discussions.size();
+        Map<Discussion,List<Discussion>> discussionListMap = new HashMap<>();
+        /*
+        for(int i=0;i<total;i++){
+            if(discussions.get(i).getParentId()==-1){
+                List<Discussion> discussions_i = getDiscussionByParentId(discussions.get(i).getId());
+                int replyTotal=discussions_i.size();
+                Discussion discusion = discussions.get(i);
+                discussionListMap.put(discusion,discussions_i);
+            }
+        }
+
+         */
+        for(int i=0;i<total;i++){
+            if(discussions.get(i).getParentId()==-1){
+                Discussion discussion_i=discussions.get(i);
+                discussionListMap.put(discussion_i,null);
+            }
+        }
+        return discussionListMap;
+    }
+
+    private List<Discussion> getDiscussionByParentId(int parentId){
+        List<Discussion> discussions = discussionDao.getDiscussionByParentId(parentId);
         return discussions;
     }
 
-    // 添加新的讨论
+    // 获取新的讨论
     @Override
-    public void addNewDiscussion(DiscussionRequest discussionRequest,int userId) {
-        Discussion exists;
-        Discussion discussion=new Discussion();
-        // 获取讨论的题目ID
-        discussion.setTopicId(discussionRequest.getTopicId());
-        // 加入当前用户ID
+    public void addNewDiscussion(int userId,int parentId,int topicId,String content){
+        Discussion discussion = new Discussion();
         discussion.setUserId(userId);
-        // 获取讨论的楼主讨论的ID
-        discussion.setParentId(discussionRequest.getParentId());
-        setDiscussion(discussion,discussionRequest.getContent());
-        try{
-            discussionDao.save(discussion);
-        }catch (DataIntegrityViolationException e){
-            exists = discussionDao.findByUserIdAndTopicId(userId,discussionRequest.getTopicId());
-            setDiscussion(exists,discussionRequest.getContent());
-            discussionDao.save(exists);
-        }
-
-    }
-    private void setDiscussion(Discussion discussion, String content) {
         discussion.setContent(content);
+        discussion.setParentId(parentId);
+        discussion.setTopicId(topicId);
         discussion.setLikeNum(0);
-        // 获得当前时间
         discussion.setSubmitTime(new Timestamp(System.currentTimeMillis()));
+        discussionDao.save(discussion);
     }
 
     // 点赞
     @Override
-    public void giveOneLike(DiscussionRequest discussionRequest) {
-        int discussion_id = discussionRequest.getId();
-        Discussion discussion = discussionMapper.getDisscussionById(discussion_id);
-        discussion.setLikeNum(discussion.getLikeNum() + 1);
-        discussionDao.save(discussion);
-
-    }
-
-    @Override
-    public void giveOneLike1(int discussionId) {
-        Discussion discussion = discussionMapper.getDisscussionById(discussionId);
+    public void giveOneLike(int discussionId) {
+        Discussion discussion = discussionDao.getDisscussionById(discussionId);
         discussion.setLikeNum(discussion.getLikeNum() + 1);
         discussionDao.save(discussion);
     }
