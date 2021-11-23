@@ -7,19 +7,17 @@ import com.intelligent.model.Discussion;
 import com.intelligent.model.Topic;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DiscussionService {
     List<Discussion> findAll();
 
     // 通过题目ID获取讨论区信息
-    List<Discussion> getDisscussionByTopicId(int TopicId);
+    Map<Discussion,List<Discussion>> getDiscussionByTopicId(int TopicId);
 
     // 添加讨论
-    void addNewDiscussion(DiscussionRequest discussionRequest,int userId);
+    void addNewDiscussion(int userId,int parentId,int topicId,String content);
 
     // 点赞
-    void giveOneLike(DiscussionRequest discussionRequest);
-
-    // 点赞
-    void giveOneLike1(int discussionId);
+    void giveOneLike(int discussionId);
 }
