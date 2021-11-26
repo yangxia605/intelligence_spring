@@ -75,14 +75,18 @@ public class AnswerServiceImpl implements AnswerService {
         AnswerStatusResponse answerStatusResponse = new AnswerStatusResponse();
         Answer answer = answerDao.findById(answerId).orElse(null);
         //todo 如果已经完毕，则还需要在返回中带上执行结果
-        if (answer != null && (Objects.equals(answer.getStatus(), AnswerStatus.COMPILE_FAILED.name())
-                || Objects.equals(answer.getStatus(), AnswerStatus.FINISH_SUCCESS.name())
-                || Objects.equals(answer.getStatus(), AnswerStatus.FINISH_FAILED.name()))) {
+//        if (answer != null && (Objects.equals(answer.getStatus(), AnswerStatus.COMPILE_FAILED.name())
+//                || Objects.equals(answer.getStatus(), AnswerStatus.FINISH_SUCCESS.name())
+//                || Objects.equals(answer.getStatus(), AnswerStatus.FINISH_FAILED.name())))
+        if (answer != null && Objects.equals(answer.getStatus(), AnswerStatus.FINISH_SUCCESS.name())){
             answerStatusResponse.setAnswerStatus(true);
             answerStatusResponse.setExecuteDetailMsg(answer.getExecuteDetailMsg());
             answerStatusResponse.setAnswerStatusMsg(answer.getStatus());
         } else {
+            System.out.println("执行失败了，setAnswerStatus为Fasle");
             answerStatusResponse.setAnswerStatus(false);
+            answerStatusResponse.setExecuteDetailMsg(answer.getExecuteDetailMsg());//编译错误信息
+            answerStatusResponse.setAnswerStatusMsg(answer.getStatus());
         }
 
         return answerStatusResponse;
@@ -92,7 +96,10 @@ public class AnswerServiceImpl implements AnswerService {
     public AnswerExecuteDetailResponse getAnswerExecuteMsg(int answerId) {
         AnswerExecuteDetailResponse answerExecuteDetailResponse = new AnswerExecuteDetailResponse();
         Optional<Answer> answer = answerDao.findById(answerId);
+        System.out.println("获取answer的执行状态。。");
         String msg = answer.map(Answer::getExecuteDetailMsg).orElse("未完成执行");
+        System.out.println("answer的执行状态为"+msg);
+
         answerExecuteDetailResponse.setExecuteDetailMsg(msg);
         return answerExecuteDetailResponse;
     }
