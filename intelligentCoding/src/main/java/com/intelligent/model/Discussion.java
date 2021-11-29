@@ -26,6 +26,7 @@ public class Discussion {
     @NotNull
     private Integer likeNum = 0;
 
+
     @ManyToOne
     @JsonIgnoreProperties({"discussions", "answers", "solutions", "userFavoriteSolutions", "userFavoriteTopics", "note"})
     @JoinColumn(name = "userId", insertable = false, updatable = false, nullable = false)
@@ -35,6 +36,7 @@ public class Discussion {
     @JsonIgnoreProperties({"discussions", "answers", "solutions", "userFavoriteTopics",  "note"})
     @JoinColumn(name = "topicId", insertable = false, updatable = false, nullable = false)
     private Topic topic;
+
 
     public Integer getId() {
         return id;
@@ -107,6 +109,7 @@ public class Discussion {
     public void setTopic(Topic topic) {
         this.topic = topic;
     }
+
 
     @Override
     public String toString() {
