@@ -26,6 +26,7 @@ public class JavaFileCreator {
     public static Logger logger = LoggerFactory.getLogger(KafkaReceiver.class);
     private static final String IN_FILE_NAME = "in.in";
     private static final String OUT_FILE_NAME = "out.out";
+    private static final String Solution_FILE_NAME = "Submit.java";
     private static final String COMPILE_PATH = "/tmp/";
 
     private final String templatePath;
@@ -39,22 +40,27 @@ public class JavaFileCreator {
     public File creat() {
         String fullPath = COMPILE_PATH + UUID.randomUUID().toString();
         String fullFileName = fullPath + "/" + FILE_NAME;
-
+        String fileneme1 = "/Users/popco/Documents/mygithub/intelligence_spring/intelligentCoding/template/gen_java/"+FILE_NAME;
         File dir = new File(fullPath);
 
         try {
             boolean mkdirs = dir.mkdirs();
             File file = new File(fullFileName);
+            File file1 = new File(fileneme1);
             boolean newFile = file.createNewFile();
             logger.info("生成文件 {}", fullFileName);
             //根据template path取到代码模版,然后把提交的答案替换进去
             String templateContent = readTemplate();
+            String SolutionContent = readSolution();
+//            templateContent = templateContent + "\n"+SolutionContent;
             Map<String, String> map = createTemplateDataModel();
             Template template = new Template("strTpl", templateContent, new Configuration(new Version("2.3.30")));
             StringWriter result = new StringWriter();
             template.process(map, result);
             logger.debug("java file content:{}", result.toString());
+//            logger.info("java file content:{}", result.toString());
             FileUtils.writeStringToFile(file, result.toString(), Charsets.UTF_8);
+            FileUtils.writeStringToFile(file1, result.toString(), Charsets.UTF_8);
         } catch (Exception e) {
             //保存失败
             logger.error("", e);
@@ -68,11 +74,17 @@ public class JavaFileCreator {
 
     private Map<String, String> createTemplateDataModel() throws IOException {
         Map<String, String> map = new HashMap<>();
-        map.put("code", answer.getCode());
+        String submit = answer.getCode();
+        submit = submit.replace("Main","Solution");
+        submit = submit.replace("main","solve");
+        submit = submit.replaceFirst("public"," ");
+//        map.put("code", answer.getCode());
+        map.put("code",submit);
         //根据in out 生成 exec,分隔符是SPLIT
         List<String> in = readInTestCase();
         List<String> out = readOutTestCase();
         StringBuilder builder = new StringBuilder();
+        //测试案例执行语句
         for (int i = 0; i < in.size(); i++) {
             String inString = in.get(i);
             String inArgs = StringUtils.join(StringUtils.split(inString, SPLIT), ",");
@@ -102,5 +114,9 @@ public class JavaFileCreator {
     private List<String> readOutTestCase() throws IOException {
         File file = new File(templatePath + OUT_FILE_NAME);
         return FileUtils.readLines(file, Charsets.UTF_8);
+    }
+    private String readSolution() throws IOException {
+        File file = new File(templatePath + Solution_FILE_NAME);
+        return FileUtils.readFileToString(file, Charsets.UTF_8);
     }
 }
