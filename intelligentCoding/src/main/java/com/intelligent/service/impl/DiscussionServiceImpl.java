@@ -1,6 +1,7 @@
 package com.intelligent.service.impl;
 
 
+import com.intelligent.model.Users;
 import com.intelligent.type.DiscussionResponse;
 import com.intelligent.dao.DiscussionDao;
 import com.intelligent.model.Discussion;
@@ -162,10 +163,12 @@ public class DiscussionServiceImpl implements DiscussionService {
                 DiscussionResponse discussionResponse = new DiscussionResponse();
                 Discussion discussion = discussions.get(i);
                 discussionResponse.setId(discussion.getId());
+                Users user = discussion.getUsers();
+                discussionResponse.setUserName(user.getName());
                 discussionResponse.setParentId(discussion.getParentId());
                 discussionResponse.setContent(discussion.getContent());
                 discussionResponse.setTopicId(discussion.getTopicId());
-                discussionResponse.setUserId(discussion.getUserId());
+                //discussionResponse.setUserId(discussion.getUserId());
                 discussionResponse.setSubmitTime(discussion.getSubmitTime());
                 discussionResponse.setLikeNum(discussion.getLikeNum());
                 discussionResponses.add(discussionResponse);
@@ -187,10 +190,12 @@ public class DiscussionServiceImpl implements DiscussionService {
                 DiscussionResponse discussionResponse = new DiscussionResponse();
                 Discussion discussion = discussions.get(i);
                 discussionResponse.setId(discussion.getId());
+                Users user = discussion.getUsers();
+                discussionResponse.setUserName(user.getName());
                 discussionResponse.setParentId(discussion.getParentId());
                 discussionResponse.setContent(discussion.getContent());
                 discussionResponse.setTopicId(discussion.getTopicId());
-                discussionResponse.setUserId(discussion.getUserId());
+                //discussionResponse.setUserId(discussion.getUserId());
                 discussionResponse.setSubmitTime(discussion.getSubmitTime());
                 discussionResponse.setLikeNum(discussion.getLikeNum());
                 discussionResponses.add(discussionResponse);

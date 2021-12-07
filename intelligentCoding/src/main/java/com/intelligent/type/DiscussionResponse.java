@@ -5,7 +5,8 @@ import java.sql.Timestamp;
 public class DiscussionResponse {
     private Integer id;// 讨论ID
     private Integer parent_id;// 楼对应的ID
-    private Integer user_id;// 用户ID
+    //private Integer user_id;// 用户ID
+    private String userName;// 用户名称
     private Integer topic_id;// 讨论对应用户ID
     private String content;// 讨论内容
     private Timestamp submit_time;// 讨论提交时间
@@ -18,8 +19,8 @@ public class DiscussionResponse {
     public int getParentId(){return parent_id;}
     public void setParentId(int parent_id){this.parent_id=parent_id;}
 
-    public int getUserId(){return user_id;}
-    public void setUserId(int user_id){this.user_id=user_id;}
+    //public int getUserId(){return user_id;}
+   // public void setUserId(int user_id){this.user_id=user_id;}
 
     public int getTopicId(){return topic_id;}
     public void setTopicId(int topic_id){this.topic_id=topic_id;}
@@ -32,4 +33,12 @@ public class DiscussionResponse {
 
     public int getLikeNum(){return like_num;}
     public void setLikeNum(int like_num){this.like_num=like_num;}
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

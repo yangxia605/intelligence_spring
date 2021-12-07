@@ -90,10 +90,12 @@ public class DiscussionController {
         discussionResponses = discussionService.getDiscussionByTopicId(topicId);
         Result<List<Discussions<List<DiscussionResponse>>>> resultDiscussion = new Result<>();
         if(discussionResponses==null){
-            resultDiscussion.setSuccess(false);
-            resultDiscussion.setData(null);
-            resultDiscussion.setCode(500);
-            resultDiscussion.setMessage("false");
+            // int[] array = new int[0];
+            discussionResponses = new ArrayList<>(0);
+            resultDiscussion.setSuccess(true);
+            resultDiscussion.setData(discussionResponses);
+            resultDiscussion.setCode(200);
+            resultDiscussion.setMessage("true");
         }
         else {
             resultDiscussion.setSuccess(true);
