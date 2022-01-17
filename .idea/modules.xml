@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/intelligence_spring.iml" filepath="$PROJECT_DIR$/.idea/intelligence_spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intelligentCoding/intelligent-code.iml" filepath="$PROJECT_DIR$/intelligentCoding/intelligent-code.iml" />
     </modules>
   </component>
 </project>
