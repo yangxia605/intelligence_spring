@@ -10,10 +10,6 @@ import java.util.List;
 
 public interface DiscussionDao extends JpaRepository<Discussion, Integer> {
 
-    Discussion findByUserIdAndTopicId(int userId, int topicId);
-
-//    List<Discussion> selectAll();
-
     // 获取全部讨论
     @Query(nativeQuery = true, value ="select * from discussion order by id")
     List<Discussion> getAll();
@@ -29,5 +25,6 @@ public interface DiscussionDao extends JpaRepository<Discussion, Integer> {
     // 根据楼主ID获取讨论
     @Query(nativeQuery = true, value ="select * from discussion where parent_id=?1")
     List<Discussion> getDiscussionByParentId(int parentId);
+
 
 }
