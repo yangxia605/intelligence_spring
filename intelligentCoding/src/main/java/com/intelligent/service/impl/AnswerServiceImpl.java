@@ -38,23 +38,30 @@ public class AnswerServiceImpl implements AnswerService {
         Answer answer = new Answer();
         answer.setTopicId(answerRequest.getTopicId());
         answer.setUserId(userId);
-        setAnswer(answer, answerRequest.getContent());
+        setNewAnswer(answer, answerRequest.getContent());
         try {
             exists = answerDao.save(answer);
         } catch (DataIntegrityViolationException e) {
+            //如果sava失败了 就是已存在，则更新存在记录的Code部分
+            System.out.println("该用户的该题记录已存在，更新为当前code");
             exists = answerDao.findByUserIdAndTopicId(userId, answerRequest.getTopicId());
-            setAnswer(exists, answerRequest.getContent());
+            setExitAnswer(exists, answerRequest.getContent());
             answerDao.save(exists);
         }
         return exists.getId();
     }
 
-    private void setAnswer(Answer answer, String content) {
+    private void setNewAnswer(Answer answer, String content) {
         answer.setCode(content);
         answer.setStatus(AnswerStatus.SAVE.name());
         answer.setPass(false);
         answer.setFailCount(0);
         answer.setSuccCount(0);
+        answer.setSubmitTime(LocalDateTime.now());
+    }
+    private void setExitAnswer(Answer answer, String content) {
+        answer.setCode(content);
+        answer.setStatus(AnswerStatus.SAVE.name());
         answer.setSubmitTime(LocalDateTime.now());
     }
 
@@ -79,9 +86,10 @@ public class AnswerServiceImpl implements AnswerService {
 //                || Objects.equals(answer.getStatus(), AnswerStatus.FINISH_SUCCESS.name())
 //                || Objects.equals(answer.getStatus(), AnswerStatus.FINISH_FAILED.name())))
         if (answer != null && Objects.equals(answer.getStatus(), AnswerStatus.FINISH_SUCCESS.name())){
+            System.out.println("执行成功，setAnswerStatus为Ture");
             answerStatusResponse.setAnswerStatus(true);
-            answerStatusResponse.setExecuteDetailMsg(answer.getExecuteDetailMsg());
-            answerStatusResponse.setAnswerStatusMsg(answer.getStatus());
+            answerStatusResponse.setExecuteDetailMsg(answer.getExecuteDetailMsg());//编译返回值
+            answerStatusResponse.setAnswerStatusMsg(answer.getStatus());//
         } else {
             System.out.println("执行失败了，setAnswerStatus为Fasle");
             answerStatusResponse.setAnswerStatus(false);

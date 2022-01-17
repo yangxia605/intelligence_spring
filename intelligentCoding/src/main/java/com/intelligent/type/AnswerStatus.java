@@ -1,7 +1,7 @@
 package com.intelligent.type;
 
 public enum AnswerStatus {
-    SAVE,
+    SAVE,//存进去了 没处理
     COMPILING,//正在编译
     RUNNING,//正在运行
     COMPILE_FAILED,//编译错误
